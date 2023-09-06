@@ -1,23 +1,40 @@
 #include "main.h"
 
 /**
- * _strpbrk - searches a string for any of a set of bytes.
- * @s: first string.
- * @accept: second string.
- * Return: a pointer to the byte in s that matches one of the
- * bytes in accept, or NULL if no such byte is found.
+ * _strchr - check for character in an array
+ * @s: pointer to array
+ * @c: char type
+ *
+ * Return: arrayed at check
  */
+
+char *_strchr(char *s, char c)
+{
+	while (*s != '\0')
+	{
+		if (*s == c)
+			return (s);
+		s++;
+	}
+	if (c == '\0')
+		return (s);
+	s = 0;
+	return (s);
+}
+/**
+ * *_strpbrk - find first appearance of a char in an array
+ *
+ * @s: pointer array to be searched
+ * @accept: pointer array with char to be searched
+ * Return:  pointer to array
+ */
+
 char *_strpbrk(char *s, char *accept)
 {
-	unsigned int i, j;
-
-	for (i = 0; *(s + i) != '\0'; i++)
+	for (; *s; s++)
 	{
-		for (j = 0; *(accept + j) != '\0'; j++)
-		{
-			if (*(s + i) == *(accept + j))
-				return (s + i);
-		}
+		if (_strchr(accept, *s) != 0)
+			return ((char *) s);
 	}
-	return ('\0');
+	return (0);
 }

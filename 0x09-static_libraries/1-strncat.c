@@ -9,36 +9,32 @@
 
 int _strlen(char *s)
 {
-	int a;
+	int b;
 
-	for (a = 0; s[a] != '\0'; a++)
+	for (b = 0; s[b] != '\0'; b++)
 	{
 
 	}
-	return (a);
+	return (b);
 }
+
 /**
- * _strcat - function to concatnate strings
+ * _strncat - function to concatnate strings with n bytes
  *
  * @dest: destination for concatnation
  *
  * @src: source of string
- *
+ * @n: int type for size of byte
  * Return: dest
  */
 
-char *_strcat(char *dest, char *src)
+char *_strncat(char *dest, char *src, int n)
 {
 	int dest_len;
 	int a;
 
 	dest_len = _strlen(dest);
-
-	for (a = 0 ; src[a] != '\0' ; a++)
+	for (a = 0; a < n && src[a] != '\0'; a++)
 		dest[dest_len + a] = src[a];
-
-	dest[dest_len + a] = '\0';
-
 	return (dest);
-
 }
