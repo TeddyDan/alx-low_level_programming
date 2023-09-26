@@ -1,30 +1,31 @@
-#include "lists.h"
-#include <stdlib.h>
-
-/**
- * pop_listint - function that deletes the head node of a listint_t,
- * linked list.
- * @head: pointer to pointer to the head of linked list.
- *
- * Make sure there is no memory leaks.
- *
- * Return:  and returns the head node’s data (n) or 0 if list is empty.
+/*
+ * File: 6-pop_listint.c
+ * Auth: Brennan D Baraban
  */
 
+#include "lists.h"
+
+/**
+ * pop_listint - Deletes the head node of a listint_t list.
+ * @head: A pointer to the address of the
+ *        head of the listint_t list.
+ *
+ * Return: If the linked list is empty - 0.
+ *         Otherwise - The head node's data (n).
+ */
 int pop_listint(listint_t **head)
 {
-	listint_t *temp_variable; /* keep track of current head */
-	int data = 0;
+	listint_t *tmp;
+	int ret;
 
-    /* if there is no list */
-	if (head == NULL || *head == NULL)
+	if (*head == NULL)
 		return (0);
-	temp_variable = *head; /* stores the pointer to temp_variable head */
-    /* access the field n of temp_var and assign it to data */
-	data = temp_variable->n;
-    /* make the value at head be the value of head at next */
+
+	tmp = *head;
+	ret = (*head)->n;
 	*head = (*head)->next;
-    /* free the temp var */
-	free(temp_variable);
-	return (data);
+
+	free(tmp);
+
+	return (ret);
 }
